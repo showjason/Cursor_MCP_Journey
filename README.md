@@ -6,12 +6,7 @@
 
 - 获取指定Slack频道下的用户列表
 - 获取指定Slack频道中特定线程的聊天记录
-
-## 安装
-
-```bash
-pip install cursor-mcp-slack
-```
+- 获取指定Slack频道中的聊天记录
 
 ## 使用方法
 
@@ -36,16 +31,16 @@ pip install cursor-mcp-slack
 2. 启动Slack MCP服务器：
 ```bash
 # 使用命令行参数提供令牌
-python -m slack --port 8080 --token YOUR_SLACK_TOKEN
+uv run slack --transport sse --port 8005 --token YOUR_SLACK_TOKEN
 
 # 或者使用.env文件中配置的令牌
-python -m slack --port 8080
+uv run slack --transport sse --port 8005
 ```
 
 3. 在Cursor中，添加新的MCP服务器：
    - 名称：Slack
    - 类型：sse
-   - 服务器URL：http://localhost:8080
+   - 服务器URL：http://localhost:8085
 
 该服务提供两个MCP工具：
 
@@ -60,9 +55,5 @@ python -m slack --port 8080
 ## 开发
 
 1. 克隆仓库
-2. 安装依赖：`pip install -e .`
-3. 运行测试：`pytest`
-
-## 许可证
-
-MIT 
+2. 安装依赖：`uv pip install -e .`
+3. 运行测试：`uv run pytest -vv -s cursor_mcp_slack/test_slack.py`
