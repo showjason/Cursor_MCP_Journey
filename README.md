@@ -45,12 +45,17 @@ uv run slack --transport sse --port 8005
 该服务提供两个MCP工具：
 
 1. `get_channel_users`: 获取指定Slack频道下的用户列表
-   - 参数：`channel_id`（Slack频道ID）
+   - 参数：`channel_id`: Slack频道ID
 
 2. `get_thread_messages`: 获取指定Slack频道中特定线程的聊天记录
    - 参数：
-     - `channel_id`：Slack频道ID
-     - `thread_ts`：线程的时间戳ID
+     - `channel_id`: Slack频道ID
+     - `thread_ts`: 线程的时间戳ID
+3. `get_conversation_history`: 获取指定Slack频道的对话历史记录
+   - 参数：
+     - `channel_id`: Slack频道ID
+     - `limit`: 返回的消息数量上限,默认100条
+     - `cursor`: 分页游标,用于获取更多消息
 
 ## 开发
 
