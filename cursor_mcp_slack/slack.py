@@ -40,10 +40,7 @@ def main(port: int, transport: str, token: str = None) -> int:
     tools.register_tools(app)
     
     # 启动服务器
-    if transport == "sse":
-        setup_server(app, port, "sse")
-    else:
-        setup_server(app, port, "stdio")
+    setup_server(app, port, transport)
 
     return 0
 
